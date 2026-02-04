@@ -6,7 +6,8 @@ import { prisma } from "./prisma";
 
 export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
-  session: { strategy: "database" },
+  // Credentials provider requires JWT session strategy, not database sessions
+  session: { strategy: "jwt" },
   providers: [
     Credentials({
       name: "Credentials",
