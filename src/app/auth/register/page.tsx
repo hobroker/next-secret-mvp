@@ -3,6 +3,9 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -35,78 +38,76 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex items-center justify-center px-4">
-      <div className="w-full max-w-md rounded-2xl border border-slate-800 bg-slate-900/60 p-8 shadow-xl shadow-black/40">
-        <h1 className="text-2xl font-semibold tracking-tight">Create account</h1>
-        <p className="mt-1 text-sm text-slate-300">
-          Sign up to start using the app.
-        </p>
+    <div className="min-h-screen bg-background text-foreground flex items-center justify-center px-4">
+      <Card className="w-full max-w-md bg-black/70 border-red-900/40">
+        <CardHeader>
+          <CardTitle className="text-red-50">Create account</CardTitle>
+          <p className="text-sm text-red-200/70">Start tracking revenue opportunities.</p>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="space-y-2">
+              <label htmlFor="name" className="text-xs font-medium text-muted-foreground">
+                Name
+              </label>
+              <Input
+                id="name"
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <label htmlFor="email" className="text-xs font-medium text-muted-foreground">
+                Email
+              </label>
+              <Input
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <label htmlFor="password" className="text-xs font-medium text-muted-foreground">
+                Password
+              </label>
+              <Input
+                id="password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                minLength={6}
+                required
+              />
+            </div>
 
-        <form onSubmit={handleSubmit} className="mt-6 space-y-4">
-          <div>
-            <label htmlFor="name" className="block text-xs font-medium text-slate-300">
-              Name
-            </label>
-            <input
-              id="name"
-              type="text"
-              className="mt-1 w-full rounded-md border border-slate-700 bg-slate-950 px-3 py-2 text-sm outline-none focus:border-sky-500"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="email" className="block text-xs font-medium text-slate-300">
-              Email
-            </label>
-            <input
-              id="email"
-              type="email"
-              className="mt-1 w-full rounded-md border border-slate-700 bg-slate-950 px-3 py-2 text-sm outline-none focus:border-sky-500"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="password" className="block text-xs font-medium text-slate-300">
-              Password
-            </label>
-            <input
-              id="password"
-              type="password"
-              className="mt-1 w-full rounded-md border border-slate-700 bg-slate-950 px-3 py-2 text-sm outline-none focus:border-sky-500"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              minLength={6}
-              required
-            />
-          </div>
+            {error && (
+              <p className="text-xs text-red-400" role="alert">
+                {error}
+              </p>
+            )}
 
-          {error && (
-            <p className="text-xs text-red-400" role="alert">
-              {error}
-            </p>
-          )}
+            <Button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-red-600 hover:bg-red-500"
+            >
+              {loading ? "Creating account..." : "Sign up"}
+            </Button>
+          </form>
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="mt-2 inline-flex w-full items-center justify-center rounded-md bg-sky-500 px-3 py-2 text-sm font-medium text-white hover:bg-sky-400 disabled:opacity-60"
-          >
-            {loading ? "Creating account..." : "Sign up"}
-          </button>
-        </form>
-
-        <p className="mt-4 text-xs text-slate-400">
-          Already have an account?{" "}
-          <Link href="/auth/login" className="text-sky-400 hover:text-sky-300">
-            Log in
-          </Link>
-          .
-        </p>
-      </div>
+          <p className="mt-4 text-xs text-red-200/70">
+            Already have an account?{" "}
+            <Link href="/auth/login" className="text-red-200 hover:text-red-100">
+              Log in
+            </Link>
+            .
+          </p>
+        </CardContent>
+      </Card>
     </div>
   );
 }

@@ -4,6 +4,9 @@ import { useState, Suspense } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 function LoginFormInner() {
   const router = useRouter();
@@ -37,27 +40,25 @@ function LoginFormInner() {
 
   return (
     <form onSubmit={handleSubmit} className="mt-6 space-y-4">
-      <div>
-        <label htmlFor="login-email" className="block text-xs font-medium text-slate-300">
+      <div className="space-y-2">
+        <label htmlFor="login-email" className="text-xs font-medium text-muted-foreground">
           Email
         </label>
-        <input
+        <Input
           id="login-email"
           type="email"
-          className="mt-1 w-full rounded-md border border-slate-700 bg-slate-950 px-3 py-2 text-sm outline-none focus:border-sky-500"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
       </div>
-      <div>
-        <label htmlFor="login-password" className="block text-xs font-medium text-slate-300">
+      <div className="space-y-2">
+        <label htmlFor="login-password" className="text-xs font-medium text-muted-foreground">
           Password
         </label>
-        <input
+        <Input
           id="login-password"
           type="password"
-          className="mt-1 w-full rounded-md border border-slate-700 bg-slate-950 px-3 py-2 text-sm outline-none focus:border-sky-500"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
@@ -70,38 +71,38 @@ function LoginFormInner() {
         </p>
       )}
 
-      <button
+      <Button
         type="submit"
         disabled={loading}
-        className="mt-2 inline-flex w-full items-center justify-center rounded-md bg-sky-500 px-3 py-2 text-sm font-medium text-white hover:bg-sky-400 disabled:opacity-60"
+        className="w-full bg-red-600 hover:bg-red-500"
       >
         {loading ? "Logging in..." : "Log in"}
-      </button>
+      </Button>
     </form>
   );
 }
 
 export default function LoginPage() {
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex items-center justify-center px-4">
-      <div className="w-full max-w-md rounded-2xl border border-slate-800 bg-slate-900/60 p-8 shadow-xl shadow-black/40">
-        <h1 className="text-2xl font-semibold tracking-tight">Log in</h1>
-        <p className="mt-1 text-sm text-slate-300">
-          Access your account to use the app.
-        </p>
-
-        <Suspense fallback={null}>
-          <LoginFormInner />
-        </Suspense>
-
-        <p className="mt-4 text-xs text-slate-400">
-          Don&apos;t have an account?{" "}
-          <Link href="/auth/register" className="text-sky-400 hover:text-sky-300">
-            Create one
-          </Link>
-          .
-        </p>
-      </div>
+    <div className="min-h-screen bg-background text-foreground flex items-center justify-center px-4">
+      <Card className="w-full max-w-md bg-black/70 border-red-900/40">
+        <CardHeader>
+          <CardTitle className="text-red-50">Log in</CardTitle>
+          <p className="text-sm text-red-200/70">Access your account to use the lab.</p>
+        </CardHeader>
+        <CardContent>
+          <Suspense fallback={null}>
+            <LoginFormInner />
+          </Suspense>
+          <p className="mt-4 text-xs text-red-200/70">
+            Don&apos;t have an account?{" "}
+            <Link href="/auth/register" className="text-red-200 hover:text-red-100">
+              Create one
+            </Link>
+            .
+          </p>
+        </CardContent>
+      </Card>
     </div>
   );
 }

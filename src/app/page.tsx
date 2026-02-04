@@ -1,36 +1,29 @@
 import Link from "next/link";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex items-center justify-center px-4">
-      <main className="w-full max-w-2xl rounded-2xl border border-slate-800 bg-slate-900/60 p-8 shadow-xl shadow-black/40">
-        <h1 className="text-3xl font-semibold tracking-tight">Secret MVP</h1>
-        <p className="mt-2 text-sm text-slate-300">
-          A small, focused tool built with Next.js, authentication, and a real
-          database-backed core feature.
-        </p>
-
-        <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-          <Link
-            href="/auth/login"
-            className="inline-flex items-center justify-center rounded-lg bg-sky-500 px-4 py-2 text-sm font-medium text-white hover:bg-sky-400"
-          >
-            Log in
-          </Link>
-          <Link
-            href="/auth/register"
-            className="inline-flex items-center justify-center rounded-lg border border-slate-700 px-4 py-2 text-sm font-medium text-slate-100 hover:border-sky-500/60 hover:text-sky-100"
-          >
-            Create account
-          </Link>
-          <Link
-            href="/app"
-            className="inline-flex items-center justify-center rounded-lg border border-transparent px-4 py-2 text-xs font-medium text-slate-400 hover:text-slate-100"
-          >
-            Go to app
-          </Link>
-        </div>
-      </main>
+    <div className="min-h-screen bg-background text-foreground flex items-center justify-center px-4">
+      <Card className="w-full max-w-2xl bg-black/70 border-red-900/40">
+        <CardHeader>
+          <CardTitle className="text-red-50">Blacklist Revenue Lab</CardTitle>
+          <p className="text-sm text-red-200/70">
+            Track, score, and export your highest‑value revenue plays.
+          </p>
+        </CardHeader>
+        <CardContent className="flex flex-col gap-3 sm:flex-row">
+          <Button asChild className="bg-red-600 hover:bg-red-500">
+            <Link href="/auth/login">Log in</Link>
+          </Button>
+          <Button asChild variant="outline" className="border-red-800 text-red-200 hover:text-red-100">
+            <Link href="/auth/register">Create account</Link>
+          </Button>
+          <Button asChild variant="ghost" className="text-red-200/70 hover:text-red-100">
+            <Link href="/app">Go to app</Link>
+          </Button>
+        </CardContent>
+      </Card>
     </div>
   );
 }

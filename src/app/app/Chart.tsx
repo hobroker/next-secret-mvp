@@ -1,4 +1,5 @@
 import { Item } from "@/generated/prisma/client";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const stages = ["idea", "qualified", "proposal", "won", "lost"] as const;
 
@@ -9,9 +10,11 @@ export default function Chart({ items }: { items: Item[] }) {
   const max = Math.max(1, ...counts);
 
   return (
-    <div className="rounded-2xl border border-red-900/40 bg-black/60 p-5">
-      <h3 className="text-sm font-semibold text-red-200">Pipeline health</h3>
-      <div className="mt-4 space-y-3">
+    <Card className="bg-black/70 border-red-900/40">
+      <CardHeader>
+        <CardTitle className="text-sm text-red-200">Pipeline health</CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-3">
         {stages.map((stage, idx) => (
           <div key={stage} className="space-y-1">
             <div className="flex justify-between text-xs text-red-200/70">
@@ -26,7 +29,7 @@ export default function Chart({ items }: { items: Item[] }) {
             </div>
           </div>
         ))}
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 }

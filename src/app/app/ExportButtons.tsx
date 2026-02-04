@@ -1,20 +1,16 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
+
 export default function ExportButtons() {
   return (
     <div className="flex flex-wrap gap-3">
-      <a
-        href="/api/export/csv"
-        className="inline-flex items-center justify-center rounded-md border border-red-800 px-3 py-2 text-xs font-medium text-red-200 hover:border-red-400 hover:text-red-100"
-      >
-        Export CSV
-      </a>
-      <a
-        href="/api/export/pdf"
-        className="inline-flex items-center justify-center rounded-md border border-red-800 px-3 py-2 text-xs font-medium text-red-200 hover:border-red-400 hover:text-red-100"
-      >
-        Export PDF
-      </a>
+      <Button asChild variant="outline" className="border-red-800 text-red-200 hover:text-red-100">
+        <a href="/api/export/csv">Export CSV</a>
+      </Button>
+      <Button asChild variant="outline" className="border-red-800 text-red-200 hover:text-red-100">
+        <a href="/api/export/pdf">Export PDF</a>
+      </Button>
     </div>
   );
 }

@@ -21,7 +21,7 @@ test("user can register, login, and add an entry", async ({ page }) => {
 
   // App page
   await page.waitForURL(/\/app/);
-  await expect(page.getByRole("heading", { name: /your entries/i })).toBeVisible();
+  await expect(page.getByText(/your entries/i)).toBeVisible();
 
   // Add entry
   const title = `Idea ${stamp}`;

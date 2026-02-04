@@ -1,4 +1,5 @@
 import { Item } from "@/generated/prisma/client";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function StatsCards({ items }: { items: Item[] }) {
   const total = items.length;
@@ -19,10 +20,16 @@ export default function StatsCards({ items }: { items: Item[] }) {
   return (
     <div className="grid gap-4 md:grid-cols-4">
       {cards.map((card) => (
-        <div key={card.label} className="rounded-xl border border-red-900/40 bg-black/60 p-4">
-          <p className="text-xs uppercase tracking-wide text-red-400/80">{card.label}</p>
-          <p className="mt-2 text-2xl font-semibold text-red-100">{card.value}</p>
-        </div>
+        <Card key={card.label} className="bg-black/70 border-red-900/40">
+          <CardHeader className="pb-2">
+            <CardTitle className="text-xs uppercase tracking-wide text-red-300/80">
+              {card.label}
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-2xl font-semibold text-red-50">{card.value}</p>
+          </CardContent>
+        </Card>
       ))}
     </div>
   );
