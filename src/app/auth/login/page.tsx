@@ -38,10 +38,11 @@ function LoginFormInner() {
   return (
     <form onSubmit={handleSubmit} className="mt-6 space-y-4">
       <div>
-        <label className="block text-xs font-medium text-slate-300">
+        <label htmlFor="login-email" className="block text-xs font-medium text-slate-300">
           Email
         </label>
         <input
+          id="login-email"
           type="email"
           className="mt-1 w-full rounded-md border border-slate-700 bg-slate-950 px-3 py-2 text-sm outline-none focus:border-sky-500"
           value={email}
@@ -50,10 +51,11 @@ function LoginFormInner() {
         />
       </div>
       <div>
-        <label className="block text-xs font-medium text-slate-300">
+        <label htmlFor="login-password" className="block text-xs font-medium text-slate-300">
           Password
         </label>
         <input
+          id="login-password"
           type="password"
           className="mt-1 w-full rounded-md border border-slate-700 bg-slate-950 px-3 py-2 text-sm outline-none focus:border-sky-500"
           value={password}

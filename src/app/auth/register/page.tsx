@@ -44,10 +44,11 @@ export default function RegisterPage() {
 
         <form onSubmit={handleSubmit} className="mt-6 space-y-4">
           <div>
-            <label className="block text-xs font-medium text-slate-300">
+            <label htmlFor="name" className="block text-xs font-medium text-slate-300">
               Name
             </label>
             <input
+              id="name"
               type="text"
               className="mt-1 w-full rounded-md border border-slate-700 bg-slate-950 px-3 py-2 text-sm outline-none focus:border-sky-500"
               value={name}
@@ -56,10 +57,11 @@ export default function RegisterPage() {
             />
           </div>
           <div>
-            <label className="block text-xs font-medium text-slate-300">
+            <label htmlFor="email" className="block text-xs font-medium text-slate-300">
               Email
             </label>
             <input
+              id="email"
               type="email"
               className="mt-1 w-full rounded-md border border-slate-700 bg-slate-950 px-3 py-2 text-sm outline-none focus:border-sky-500"
               value={email}
@@ -68,10 +70,11 @@ export default function RegisterPage() {
             />
           </div>
           <div>
-            <label className="block text-xs font-medium text-slate-300">
+            <label htmlFor="password" className="block text-xs font-medium text-slate-300">
               Password
             </label>
             <input
+              id="password"
               type="password"
               className="mt-1 w-full rounded-md border border-slate-700 bg-slate-950 px-3 py-2 text-sm outline-none focus:border-sky-500"
               value={password}
