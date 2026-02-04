@@ -64,14 +64,18 @@ model VerificationToken {
 // Domain models
 
 model Item {
-  id        String   @id @default(cuid())
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId    String
-  title     String
-  slug      String
-  data      Json
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          String   @id @default(cuid())
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String
+  title       String
+  slug        String
+  status      String   @default("idea")
+  value       Int?
+  probability Int?
+  nextAction  DateTime?
+  data        Json
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
   @@unique([userId, slug])
 }

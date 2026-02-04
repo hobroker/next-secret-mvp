@@ -13,12 +13,13 @@ function slugify(input: string) {
 
 export async function GET() {
   const session = await getServerSession(authOptions);
-  if (!session?.user?.id) {
+  const userId = (session?.user as { id?: string })?.id;
+  if (!userId) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const items = await prisma.item.findMany({
-    where: { userId: session.user.id as string },
+    where: { userId },
     orderBy: { createdAt: "desc" },
   });
 
@@ -27,11 +28,12 @@ export async function GET() {
 
 export async function POST(request: Request) {
   const session = await getServerSession(authOptions);
-  if (!session?.user?.id) {
+  const userId = (session?.user as { id?: string })?.id;
+  if (!userId) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const { title, details } = await request.json();
+  const { title, details, value, probability, status, nextAction } = await request.json();
   if (!title || typeof title !== "string") {
     return NextResponse.json({ error: "Title is required" }, { status: 400 });
   }
@@ -41,9 +43,13 @@ export async function POST(request: Request) {
 
   const item = await prisma.item.create({
     data: {
-      userId: session.user.id as string,
+      userId,
       title,
       slug,
+      status: status || "idea",
+      value: typeof value === "number" ? value : null,
+      probability: typeof probability === "number" ? probability : null,
+      nextAction: nextAction ? new Date(nextAction) : null,
       data: { details: details ?? "" },
     },
   });
