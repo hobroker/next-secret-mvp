@@ -27,7 +27,21 @@ test("user can register, login, and add an entry", async ({ page }) => {
   const title = `Idea ${stamp}`;
   await page.getByLabel("Title").fill(title);
   await page.getByLabel("Details").fill("Simple test entry");
+  await page.getByLabel("Probability (%)").fill("60");
   await page.getByRole("button", { name: /add/i }).click();
 
   await expect(page.getByText(title)).toBeVisible();
+
+  // Export checks
+  const csvStatus = await page.evaluate(async () => {
+    const res = await fetch("/api/export/csv");
+    return res.status;
+  });
+  expect(csvStatus).toBe(200);
+
+  const pdfStatus = await page.evaluate(async () => {
+    const res = await fetch("/api/export/pdf");
+    return res.status;
+  });
+  expect(pdfStatus).toBe(200);
 });

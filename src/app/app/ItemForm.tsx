@@ -12,6 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { DatePicker } from "./DatePicker";
 
 export default function ItemForm() {
   const router = useRouter();
@@ -20,7 +21,7 @@ export default function ItemForm() {
   const [value, setValue] = useState("");
   const [probability, setProbability] = useState("50");
   const [status, setStatus] = useState("idea");
-  const [nextAction, setNextAction] = useState("");
+  const [nextAction, setNextAction] = useState<Date | undefined>(undefined);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -38,7 +39,7 @@ export default function ItemForm() {
         value: value ? Number(value) : null,
         probability: probability ? Number(probability) : null,
         status,
-        nextAction: nextAction || null,
+        nextAction: nextAction ? nextAction.toISOString() : null,
       }),
     });
 
@@ -55,7 +56,7 @@ export default function ItemForm() {
     setValue("");
     setProbability("50");
     setStatus("idea");
-    setNextAction("");
+    setNextAction(undefined);
     router.refresh();
   }
 
@@ -132,15 +133,10 @@ export default function ItemForm() {
           </Select>
         </div>
         <div className="space-y-2">
-          <label htmlFor="item-next" className="text-xs font-medium text-muted-foreground">
+          <label className="text-xs font-medium text-muted-foreground">
             Next action date
           </label>
-          <Input
-            id="item-next"
-            type="date"
-            value={nextAction}
-            onChange={(e) => setNextAction(e.target.value)}
-          />
+          <DatePicker value={nextAction} onChange={setNextAction} />
         </div>
       </div>
 

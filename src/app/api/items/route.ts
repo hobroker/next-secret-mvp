@@ -34,6 +34,24 @@ export async function POST(request: Request) {
   }
 
   const { title, details, value, probability, status, nextAction } = await request.json();
+
+  type DateLike = { $type?: string; value?: string };
+  const normalizeDate = (input: unknown): Date | null => {
+    if (!input) return null;
+    if (input instanceof Date) return input;
+    if (typeof input === "string") {
+      const parsed = new Date(input);
+      return isNaN(parsed.getTime()) ? null : parsed;
+    }
+    if (typeof input === "object" && input) {
+      const typed = input as DateLike;
+      if (typed.value) {
+        const parsed = new Date(typed.value);
+        return isNaN(parsed.getTime()) ? null : parsed;
+      }
+    }
+    return null;
+  };
   if (!title || typeof title !== "string") {
     return NextResponse.json({ error: "Title is required" }, { status: 400 });
   }
@@ -49,7 +67,7 @@ export async function POST(request: Request) {
       status: status || "idea",
       value: typeof value === "number" ? value : null,
       probability: typeof probability === "number" ? probability : null,
-      nextAction: nextAction ? new Date(nextAction) : null,
+      nextAction: normalizeDate(nextAction),
       data: { details: details ?? "" },
     },
   });
