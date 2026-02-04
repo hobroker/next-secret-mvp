@@ -1,10 +1,15 @@
 import { PrismaClient } from "@/generated/prisma/client";
+import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
 
-const globalForPrisma = globalThis as any;
+// Use a narrow global type instead of `any` to satisfy ESLint
+const globalForPrisma = globalThis as { prisma?: PrismaClient };
+
+const adapter = new PrismaBetterSqlite3({
+  url: process.env.DATABASE_URL ?? "file:./dev.db",
+});
 
 export const prisma: PrismaClient = globalForPrisma.prisma ??
-  // Use the standard PrismaClient; DATABASE_URL is read from environment (e.g. file:./dev.db for SQLite)
-  new PrismaClient();
+  new PrismaClient({ adapter });
 
 if (process.env.NODE_ENV !== "production") {
   globalForPrisma.prisma = prisma;

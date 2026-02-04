@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { signOut } from "next-auth/react";
 
 export async function POST() {
   // With App Router, signOut is typically used client-side.
