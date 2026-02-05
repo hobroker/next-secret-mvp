@@ -1,7 +1,7 @@
 import { Item } from "@/generated/prisma/client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-const stages = ["idea", "qualified", "proposal", "won", "lost"] as const;
+const stages = ["draft", "idea", "qualified", "proposal", "won", "lost"] as const;
 
 export default function Chart({ items }: { items: Item[] }) {
   const counts = stages.map(

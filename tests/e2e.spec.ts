@@ -19,8 +19,23 @@ test("user can register, login, and add an entry", async ({ page }) => {
   await page.getByLabel("Password").fill(password);
   await page.getByRole("button", { name: /log in/i }).click();
 
-  // App page
+  // Onboarding
+  await page.waitForURL(/\/app\/onboarding/);
+  await page.getByRole("button", { name: "Next" }).nth(0).click();
+  await page.getByRole("button", { name: "Next" }).nth(0).click();
+  await page.getByRole("button", { name: /finish setup/i }).click();
+
+  // Dashboard
   await page.waitForURL(/\/app/);
+  await expect(page.getByText(/welcome back/i)).toBeVisible();
+
+  // Templates
+  await page.getByRole("link", { name: /templates/i }).click();
+  await expect(page.getByText(/templates/i)).toBeVisible();
+  await page.getByRole("button", { name: /use template/i }).first().click();
+
+  // Opportunities
+  await page.waitForURL(/\/app\/opportunities/);
   await expect(page.getByText(/your entries/i)).toBeVisible();
 
   // Add entry

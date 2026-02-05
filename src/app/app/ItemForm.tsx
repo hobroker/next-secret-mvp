@@ -25,7 +25,7 @@ export default function ItemForm() {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent, overrideStatus?: string) {
     e.preventDefault();
     setLoading(true);
     setError(null);
@@ -38,7 +38,7 @@ export default function ItemForm() {
         details,
         value: value ? Number(value) : null,
         probability: probability ? Number(probability) : null,
-        status,
+        status: overrideStatus ?? status,
         nextAction: nextAction ? nextAction.toISOString() : null,
       }),
     });
@@ -124,7 +124,7 @@ export default function ItemForm() {
               <SelectValue placeholder="Select status" />
             </SelectTrigger>
             <SelectContent>
-              {"idea,qualified,proposal,won,lost".split(",").map((s) => (
+              {"draft,idea,qualified,proposal,won,lost".split(",").map((s) => (
                 <SelectItem key={s} value={s}>
                   {s}
                 </SelectItem>
@@ -145,9 +145,20 @@ export default function ItemForm() {
           {error}
         </p>
       )}
-      <Button type="submit" disabled={loading} className="bg-red-600 hover:bg-red-500">
-        {loading ? "Saving..." : "Add"}
-      </Button>
+      <div className="flex flex-wrap gap-3">
+        <Button type="submit" disabled={loading} className="bg-red-600 hover:bg-red-500">
+          {loading ? "Saving..." : "Add"}
+        </Button>
+        <Button
+          type="button"
+          variant="outline"
+          disabled={loading}
+          className="border-red-800 text-red-200 hover:text-red-100"
+          onClick={(e) => handleSubmit(e, "draft")}
+        >
+          Save draft
+        </Button>
+      </div>
     </form>
   );
 }
