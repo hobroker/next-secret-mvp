@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Blacklist Revenue Lab
 
-## Getting Started
+A ruthless, fast, black/red revenue pipeline tracker. Capture ideas, score them, and ship the ones that matter.
 
-First, run the development server:
+## ✨ What it does
+
+- ✅ Opportunity tracking with value, probability, status, next action
+- ✅ Templates/playbooks to create opportunities in seconds
+- ✅ Search + filters + saved views
+- ✅ Favorites + insights dashboard
+- ✅ CSV/PDF exports
+- ✅ Onboarding flow + system theme toggle
+
+## 🧱 Stack
+
+- **Next.js 16 (App Router)**
+- **NextAuth** (credentials)
+- **Prisma + SQLite**
+- **Tailwind v4 + shadcn/ui**
+- **Playwright** (e2e)
+
+## 🚀 Quick start
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open: http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🗄️ Database
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This repo uses **SQLite** via Prisma.
 
-## Learn More
+```bash
+npx prisma db push
+npx prisma generate
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 🔐 Environment variables
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Create `.env` from `.env.example`:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+cp .env.example .env
+```
 
-## Deploy on Vercel
+## ✅ Tests
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run lint
+npm run build
+npm run e2e
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+E2E uses Playwright and spins up the app automatically.
+
+## 📂 Key routes
+
+- `/` — Landing
+- `/auth/register` / `/auth/login`
+- `/app` — Dashboard
+- `/app/onboarding`
+- `/app/opportunities`
+- `/app/templates`
+- `/app/insights`
+
+## 🧪 E2E coverage (split spec files)
+
+- `tests/landing.spec.ts`
+- `tests/onboarding-dashboard.spec.ts`
+- `tests/templates-opportunities.spec.ts`
+- `tests/insights-theme.spec.ts`
+- `tests/exports.spec.ts`
+
+## 🧭 Roadmap (short-term)
+
+- 🔔 Notifications + digest
+- 💬 Feedback + support page
+- 🧪 Changelog / updates
+- 🔐 Profile + preferences
+
+---
+
+Built for speed, not excuses.
