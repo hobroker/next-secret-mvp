@@ -1,13 +1,18 @@
 import { test, expect } from "@playwright/test";
 
-test("user can register, login, and add an entry", async ({ page }) => {
+test("full product flow", async ({ page }) => {
   const stamp = Date.now();
   const email = `test+${stamp}@example.com`;
   const password = "TestPass123!";
   const name = "Test User";
 
+  // Landing page CTA
+  await page.goto("/");
+  await expect(page.getByRole("heading", { name: /turn raw ideas/i })).toBeVisible();
+  await expect(page.getByRole("link", { name: /get started/i })).toBeVisible();
+
   // Register
-  await page.goto("/auth/register");
+  await page.getByRole("link", { name: /get started/i }).click();
   await page.getByLabel("Name").fill(name);
   await page.getByLabel("Email").fill(email);
   await page.getByLabel("Password").fill(password);
@@ -25,9 +30,22 @@ test("user can register, login, and add an entry", async ({ page }) => {
   await page.getByRole("button", { name: "Next" }).nth(0).click();
   await page.getByRole("button", { name: /finish setup/i }).click();
 
-  // Dashboard
+  // Dashboard widgets
   await page.waitForURL(/\/app/);
   await expect(page.getByText(/welcome back/i)).toBeVisible();
+  await expect(page.getByText(/recent activity/i)).toBeVisible();
+  await expect(page.getByText("Drafts", { exact: true }).first()).toBeVisible();
+  await expect(page.getByText(/quick stats/i)).toBeVisible();
+
+  // Theme toggle
+  const initialTheme = await page.evaluate(() =>
+    document.documentElement.classList.contains("dark")
+  );
+  await page.getByRole("button", { name: /light|dark/i }).click();
+  const toggledTheme = await page.evaluate(() =>
+    document.documentElement.classList.contains("dark")
+  );
+  expect(toggledTheme).toBe(!initialTheme);
 
   // Templates
   await page.getByRole("link", { name: /templates/i }).click();
@@ -38,6 +56,12 @@ test("user can register, login, and add an entry", async ({ page }) => {
   await page.waitForURL(/\/app\/opportunities/);
   await expect(page.getByText(/your entries/i)).toBeVisible();
 
+  // Add draft
+  const draftTitle = `Draft ${stamp}`;
+  await page.getByLabel("Title").fill(draftTitle);
+  await page.getByLabel("Details").fill("Draft entry");
+  await page.getByRole("button", { name: /save draft/i }).click();
+
   // Add entry
   const title = `Idea ${stamp}`;
   await page.getByLabel("Title").fill(title);
@@ -46,7 +70,7 @@ test("user can register, login, and add an entry", async ({ page }) => {
   await page.getByLabel("Mark as favorite").check();
   await page.getByRole("button", { name: /add/i }).click();
 
-  await expect(page.getByText(title)).toBeVisible();
+  await expect(page.getByRole("table")).toContainText(title);
 
   // Filters
   await page.getByPlaceholder("Search titles").fill("Idea");
