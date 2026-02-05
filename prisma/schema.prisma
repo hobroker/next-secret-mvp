@@ -21,6 +21,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   items         Item[]
+  savedViews    SavedView[]
 
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
@@ -74,9 +75,19 @@ model Item {
   value       Int?
   probability Int?
   nextAction  DateTime?
+  isFavorite  Boolean  @default(false)
   data        Json
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
   @@unique([userId, slug])
+}
+
+model SavedView {
+  id        String   @id @default(cuid())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  name      String
+  query     Json
+  createdAt DateTime @default(now())
 }

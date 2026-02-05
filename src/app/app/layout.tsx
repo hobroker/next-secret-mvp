@@ -30,6 +30,9 @@ export default async function AppLayout({
           <Link href="/app/templates" className="hover:text-red-100">
             Templates
           </Link>
+          <Link href="/app/insights" className="hover:text-red-100">
+            Insights
+          </Link>
         </nav>
         <div className="flex items-center gap-3 text-xs text-red-200/70">
           <span>{session.user.email}</span>

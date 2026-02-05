@@ -33,7 +33,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const { title, details, value, probability, status, nextAction } = await request.json();
+  const { title, details, value, probability, status, nextAction, isFavorite } = await request.json();
 
   type DateLike = { $type?: string; value?: string };
   const normalizeDate = (input: unknown): Date | null => {
@@ -68,6 +68,7 @@ export async function POST(request: Request) {
       value: typeof value === "number" ? value : null,
       probability: typeof probability === "number" ? probability : null,
       nextAction: normalizeDate(nextAction),
+      isFavorite: Boolean(isFavorite),
       data: { details: details ?? "" },
     },
   });

@@ -43,9 +43,27 @@ test("user can register, login, and add an entry", async ({ page }) => {
   await page.getByLabel("Title").fill(title);
   await page.getByLabel("Details").fill("Simple test entry");
   await page.getByLabel("Probability (%)").fill("60");
+  await page.getByLabel("Mark as favorite").check();
   await page.getByRole("button", { name: /add/i }).click();
 
   await expect(page.getByText(title)).toBeVisible();
+
+  // Filters
+  await page.getByPlaceholder("Search titles").fill("Idea");
+  await page.getByLabel("Favorites only").check();
+  await page.getByRole("button", { name: /apply/i }).click();
+  await page.waitForURL(/favorite=1/);
+  await expect(page.getByRole("table")).toContainText(title);
+
+  // Saved view
+  await page.getByPlaceholder("Save view name").fill("Favs");
+  await page.getByRole("button", { name: /save view/i }).click();
+  await page.getByRole("link", { name: "Favs" }).click();
+  await expect(page.getByText(title)).toBeVisible();
+
+  // Insights
+  await page.getByRole("link", { name: /insights/i }).click();
+  await expect(page.getByText(/insights/i)).toBeVisible();
 
   // Export checks
   const csvStatus = await page.evaluate(async () => {

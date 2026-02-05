@@ -22,6 +22,7 @@ export default function ItemForm() {
   const [probability, setProbability] = useState("50");
   const [status, setStatus] = useState("idea");
   const [nextAction, setNextAction] = useState<Date | undefined>(undefined);
+  const [isFavorite, setIsFavorite] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -40,6 +41,7 @@ export default function ItemForm() {
         probability: probability ? Number(probability) : null,
         status: overrideStatus ?? status,
         nextAction: nextAction ? nextAction.toISOString() : null,
+        isFavorite,
       }),
     });
 
@@ -57,6 +59,7 @@ export default function ItemForm() {
     setProbability("50");
     setStatus("idea");
     setNextAction(undefined);
+    setIsFavorite(false);
     router.refresh();
   }
 
@@ -104,6 +107,18 @@ export default function ItemForm() {
       </div>
 
       <div className="grid gap-4 md:grid-cols-3">
+        <div className="flex items-end gap-2">
+          <input
+            id="item-favorite"
+            type="checkbox"
+            checked={isFavorite}
+            onChange={(e) => setIsFavorite(e.target.checked)}
+            className="h-4 w-4 rounded border-red-800 bg-black/50"
+          />
+          <label htmlFor="item-favorite" className="text-xs font-medium text-muted-foreground">
+            Mark as favorite
+          </label>
+        </div>
         <div className="space-y-2">
           <label htmlFor="item-prob" className="text-xs font-medium text-muted-foreground">
             Probability (%)
