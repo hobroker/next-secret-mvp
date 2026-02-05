@@ -2,6 +2,7 @@ import { getServerSession } from "next-auth";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { authOptions } from "@/lib/auth";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export default async function AppLayout({
   children,
@@ -35,6 +36,7 @@ export default async function AppLayout({
           </Link>
         </nav>
         <div className="flex items-center gap-3 text-xs text-red-200/70">
+          <ThemeToggle />
           <span>{session.user.email}</span>
           <form action="/api/auth/signout" method="post">
             <button className="rounded-md border border-red-800 px-3 py-1 hover:border-red-400 hover:text-red-100">
