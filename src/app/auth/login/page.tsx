@@ -87,16 +87,16 @@ export default function LoginPage() {
     <div className="min-h-screen bg-background text-foreground flex items-center justify-center px-4">
       <Card className="w-full max-w-md bg-black/70 border-red-900/40">
         <CardHeader>
-          <CardTitle className="text-red-50">Log in</CardTitle>
-          <p className="text-sm text-red-200/70">Access your account to use the lab.</p>
+          <CardTitle className="text-red-950 dark:text-red-50">Log in</CardTitle>
+          <p className="text-sm text-red-700/70 dark:text-red-200/70">Access your account to use the lab.</p>
         </CardHeader>
         <CardContent>
           <Suspense fallback={null}>
             <LoginFormInner />
           </Suspense>
-          <p className="mt-4 text-xs text-red-200/70">
+          <p className="mt-4 text-xs text-red-700/70 dark:text-red-200/70">
             Don&apos;t have an account?{" "}
-            <Link href="/auth/register" className="text-red-200 hover:text-red-100">
+            <Link href="/auth/register" className="text-red-800 dark:text-red-200 hover:text-red-900 dark:hover:text-red-100">
               Create one
             </Link>
             .

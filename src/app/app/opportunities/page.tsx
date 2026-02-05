@@ -79,7 +79,7 @@ export default async function OpportunitiesPage({
 
       <Card className="bg-black/70 border-red-900/40">
         <CardHeader>
-          <CardTitle className="text-red-50">Search & filters</CardTitle>
+          <CardTitle className="text-red-950 dark:text-red-50">Search & filters</CardTitle>
         </CardHeader>
         <CardContent>
           <form method="get" className="grid gap-4 md:grid-cols-4">
@@ -89,7 +89,7 @@ export default async function OpportunitiesPage({
             <select
               name="status"
               defaultValue={status}
-              className="h-10 rounded-md border border-red-800 bg-black/70 px-3 text-sm text-red-200"
+              className="h-10 rounded-md border border-red-800 bg-black/70 px-3 text-sm text-red-800 dark:text-red-200"
             >
               {"all,draft,idea,qualified,proposal,won,lost".split(",").map((s) => (
                 <option key={s} value={s}>
@@ -97,7 +97,7 @@ export default async function OpportunitiesPage({
                 </option>
               ))}
             </select>
-            <label className="flex items-center gap-2 text-xs text-red-200/70">
+            <label className="flex items-center gap-2 text-xs text-red-700/70 dark:text-red-200/70">
               <input
                 type="checkbox"
                 name="favorite"
@@ -110,7 +110,7 @@ export default async function OpportunitiesPage({
             <Button type="submit" className="bg-red-600 hover:bg-red-500">Apply</Button>
             <Link
               href="/app/opportunities"
-              className="text-xs text-red-200/70 hover:text-red-100"
+              className="text-xs text-red-700/70 dark:text-red-200/70 hover:text-red-900 dark:hover:text-red-100"
             >
               Clear filters
             </Link>
@@ -120,13 +120,13 @@ export default async function OpportunitiesPage({
 
       <Card className="bg-black/70 border-red-900/40">
         <CardHeader>
-          <CardTitle className="text-red-50">Saved views</CardTitle>
+          <CardTitle className="text-red-950 dark:text-red-50">Saved views</CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
           <SavedViewsClient />
           <div className="flex flex-wrap gap-2 text-xs">
             {savedViews.length === 0 ? (
-              <span className="text-red-200/70">No saved views yet.</span>
+              <span className="text-red-700/70 dark:text-red-200/70">No saved views yet.</span>
             ) : (
               savedViews.map((view) => {
                 const query = new URLSearchParams(view.query as Record<string, string>).toString();
@@ -134,7 +134,7 @@ export default async function OpportunitiesPage({
                   <Link
                     key={view.id}
                     href={`/app/opportunities?${query}`}
-                    className="rounded-md border border-red-800 px-3 py-1 text-red-100 hover:border-red-500"
+                    className="rounded-md border border-red-800 px-3 py-1 text-red-900 dark:text-red-100 hover:border-red-500"
                   >
                     {view.name}
                   </Link>
@@ -148,8 +148,8 @@ export default async function OpportunitiesPage({
       <div className="grid gap-6 lg:grid-cols-[2fr,1fr]">
         <Card className="bg-black/70 border-red-900/40">
           <CardHeader>
-            <CardTitle className="text-red-50">Revenue Opportunities</CardTitle>
-            <p className="text-sm text-red-200/70">
+            <CardTitle className="text-red-950 dark:text-red-50">Revenue Opportunities</CardTitle>
+            <p className="text-sm text-red-700/70 dark:text-red-200/70">
               Track, score, and prioritize money‑making ideas. Exportable. Sellable. Ruthless.
             </p>
           </CardHeader>
@@ -163,12 +163,12 @@ export default async function OpportunitiesPage({
 
       <Card className="bg-black/70 border-red-900/40">
         <CardHeader className="flex flex-row items-center justify-between">
-          <CardTitle className="text-red-100">Your entries</CardTitle>
+          <CardTitle className="text-red-900 dark:text-red-100">Your entries</CardTitle>
           <ExportButtons />
         </CardHeader>
         <CardContent>
           {items.length === 0 ? (
-            <p className="text-sm text-red-200/70">No entries yet. Add one above.</p>
+            <p className="text-sm text-red-700/70 dark:text-red-200/70">No entries yet. Add one above.</p>
           ) : (
             <Table>
               <TableHeader>
@@ -184,16 +184,16 @@ export default async function OpportunitiesPage({
               <TableBody>
                 {items.map((item) => (
                   <TableRow key={item.id}>
-                    <TableCell className="font-medium text-red-50">
+                    <TableCell className="font-medium text-red-950 dark:text-red-50">
                       {item.title}
                       {item.data && typeof item.data === "object" && "details" in item.data ? (
-                        <p className="text-xs text-red-200/70">
+                        <p className="text-xs text-red-700/70 dark:text-red-200/70">
                           {(item.data as { details?: string }).details}
                         </p>
                       ) : null}
                     </TableCell>
                     <TableCell>
-                      <Badge variant="outline" className="border-red-800 text-red-200">
+                      <Badge variant="outline" className="border-red-800 text-red-800 dark:text-red-200">
                         {item.status}
                       </Badge>
                     </TableCell>

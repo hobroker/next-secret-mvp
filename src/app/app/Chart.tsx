@@ -12,12 +12,12 @@ export default function Chart({ items }: { items: Item[] }) {
   return (
     <Card className="bg-black/70 border-red-900/40">
       <CardHeader>
-        <CardTitle className="text-sm text-red-200">Pipeline health</CardTitle>
+        <CardTitle className="text-sm text-red-800 dark:text-red-200">Pipeline health</CardTitle>
       </CardHeader>
       <CardContent className="space-y-3">
         {stages.map((stage, idx) => (
           <div key={stage} className="space-y-1">
-            <div className="flex justify-between text-xs text-red-200/70">
+            <div className="flex justify-between text-xs text-red-700/70 dark:text-red-200/70">
               <span className="capitalize">{stage}</span>
               <span>{counts[idx]}</span>
             </div>

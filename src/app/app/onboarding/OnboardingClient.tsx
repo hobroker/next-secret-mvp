@@ -35,14 +35,14 @@ export default function OnboardingClient() {
     <div className="mx-auto max-w-3xl">
       <Card className="bg-black/70 border-red-900/40">
         <CardHeader>
-          <CardTitle className="text-red-50">{steps[step].title}</CardTitle>
-          <p className="text-sm text-red-200/70">{steps[step].body}</p>
+          <CardTitle className="text-red-950 dark:text-red-50">{steps[step].title}</CardTitle>
+          <p className="text-sm text-red-700/70 dark:text-red-200/70">{steps[step].body}</p>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
-          <div className="text-xs text-red-200/70">Step {step + 1} of {steps.length}</div>
+          <div className="text-xs text-red-700/70 dark:text-red-200/70">Step {step + 1} of {steps.length}</div>
           <div className="flex gap-3">
             {step > 0 && (
-              <Button variant="outline" className="border-red-800 text-red-200" onClick={() => setStep(step - 1)}>
+              <Button variant="outline" className="border-red-800 text-red-800 dark:text-red-200" onClick={() => setStep(step - 1)}>
                 Back
               </Button>
             )}
@@ -56,9 +56,9 @@ export default function OnboardingClient() {
               </Button>
             )}
           </div>
-          <div className="flex gap-3 text-xs text-red-200/70">
-            <Button variant="ghost" className="text-red-200/70 hover:text-red-100" onClick={() => router.push("/app/opportunities")}>Go to opportunities</Button>
-            <Button variant="ghost" className="text-red-200/70 hover:text-red-100" onClick={() => router.push("/app/templates")}>Browse templates</Button>
+          <div className="flex gap-3 text-xs text-red-700/70 dark:text-red-200/70">
+            <Button variant="ghost" className="text-red-700/70 dark:text-red-200/70 hover:text-red-900 dark:hover:text-red-100" onClick={() => router.push("/app/opportunities")}>Go to opportunities</Button>
+            <Button variant="ghost" className="text-red-700/70 dark:text-red-200/70 hover:text-red-900 dark:hover:text-red-100" onClick={() => router.push("/app/templates")}>Browse templates</Button>
           </div>
         </CardContent>
       </Card>

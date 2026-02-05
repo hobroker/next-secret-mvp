@@ -59,8 +59,8 @@ export default function TemplatesClient() {
     <div className="mx-auto max-w-5xl grid gap-6">
       <Card className="bg-black/70 border-red-900/40">
         <CardHeader>
-          <CardTitle className="text-red-50">Templates & Playbooks</CardTitle>
-          <p className="text-sm text-red-200/70">
+          <CardTitle className="text-red-950 dark:text-red-50">Templates & Playbooks</CardTitle>
+          <p className="text-sm text-red-700/70 dark:text-red-200/70">
             Clone a proven playbook and customize it in seconds.
           </p>
         </CardHeader>
@@ -70,15 +70,15 @@ export default function TemplatesClient() {
         {templates.map((template) => (
           <Card key={template.id} className="bg-black/70 border-red-900/40">
             <CardHeader>
-              <CardTitle className="text-red-100 text-base">{template.title}</CardTitle>
-              <p className="text-sm text-red-200/70">{template.details}</p>
+              <CardTitle className="text-red-900 dark:text-red-100 text-base">{template.title}</CardTitle>
+              <p className="text-sm text-red-700/70 dark:text-red-200/70">{template.details}</p>
             </CardHeader>
-            <CardContent className="space-y-3 text-sm text-red-200/70">
+            <CardContent className="space-y-3 text-sm text-red-700/70 dark:text-red-200/70">
               <div>
-                Value: <span className="text-red-100">${template.value}</span>
+                Value: <span className="text-red-900 dark:text-red-100">${template.value}</span>
               </div>
               <div>
-                Probability: <span className="text-red-100">{template.probability}%</span>
+                Probability: <span className="text-red-900 dark:text-red-100">{template.probability}%</span>
               </div>
               <Button
                 onClick={() => applyTemplate(template.id)}

@@ -27,7 +27,7 @@ export default function StatsCards({ items }: { items: Item[] }) {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-2xl font-semibold text-red-50">{card.value}</p>
+            <p className="text-2xl font-semibold text-red-950 dark:text-red-50">{card.value}</p>
           </CardContent>
         </Card>
       ))}

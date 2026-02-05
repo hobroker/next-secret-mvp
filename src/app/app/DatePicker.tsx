@@ -19,7 +19,7 @@ export function DatePicker({
       <PopoverTrigger asChild>
         <Button
           variant="outline"
-          className="w-full justify-start text-left font-normal border-red-800 text-red-200 hover:text-red-100"
+          className="w-full justify-start text-left font-normal border-red-800 text-red-800 dark:text-red-200 hover:text-red-900 dark:hover:text-red-100"
         >
           <CalendarIcon className="mr-2 h-4 w-4" />
           {value ? format(value, "PPP") : "Pick a date"}

@@ -37,37 +37,37 @@ export default async function InsightsPage() {
     <div className="mx-auto max-w-5xl grid gap-6">
       <Card className="bg-black/70 border-red-900/40">
         <CardHeader>
-          <CardTitle className="text-red-50">Insights</CardTitle>
-          <p className="text-sm text-red-200/70">A quick pulse check on your pipeline.</p>
+          <CardTitle className="text-red-950 dark:text-red-50">Insights</CardTitle>
+          <p className="text-sm text-red-700/70 dark:text-red-200/70">A quick pulse check on your pipeline.</p>
         </CardHeader>
       </Card>
 
       <div className="grid gap-6 md:grid-cols-3">
         <Card className="bg-black/70 border-red-900/40">
           <CardHeader>
-            <CardTitle className="text-red-100">Total value</CardTitle>
+            <CardTitle className="text-red-900 dark:text-red-100">Total value</CardTitle>
           </CardHeader>
-          <CardContent className="text-2xl text-red-50">${totalValue}</CardContent>
+          <CardContent className="text-2xl text-red-950 dark:text-red-50">${totalValue}</CardContent>
         </Card>
         <Card className="bg-black/70 border-red-900/40">
           <CardHeader>
-            <CardTitle className="text-red-100">Average value</CardTitle>
+            <CardTitle className="text-red-900 dark:text-red-100">Average value</CardTitle>
           </CardHeader>
-          <CardContent className="text-2xl text-red-50">${averageValue}</CardContent>
+          <CardContent className="text-2xl text-red-950 dark:text-red-50">${averageValue}</CardContent>
         </Card>
         <Card className="bg-black/70 border-red-900/40">
           <CardHeader>
-            <CardTitle className="text-red-100">Favorites</CardTitle>
+            <CardTitle className="text-red-900 dark:text-red-100">Favorites</CardTitle>
           </CardHeader>
-          <CardContent className="text-2xl text-red-50">{favoriteCount}</CardContent>
+          <CardContent className="text-2xl text-red-950 dark:text-red-50">{favoriteCount}</CardContent>
         </Card>
       </div>
 
       <Card className="bg-black/70 border-red-900/40">
         <CardHeader>
-          <CardTitle className="text-red-100">Status breakdown</CardTitle>
+          <CardTitle className="text-red-900 dark:text-red-100">Status breakdown</CardTitle>
         </CardHeader>
-        <CardContent className="space-y-2 text-sm text-red-200/70">
+        <CardContent className="space-y-2 text-sm text-red-700/70 dark:text-red-200/70">
           {Object.keys(statusCounts).length === 0 ? (
             <p>No items yet.</p>
           ) : (

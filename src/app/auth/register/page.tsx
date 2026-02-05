@@ -41,8 +41,8 @@ export default function RegisterPage() {
     <div className="min-h-screen bg-background text-foreground flex items-center justify-center px-4">
       <Card className="w-full max-w-md bg-black/70 border-red-900/40">
         <CardHeader>
-          <CardTitle className="text-red-50">Create account</CardTitle>
-          <p className="text-sm text-red-200/70">Start tracking revenue opportunities.</p>
+          <CardTitle className="text-red-950 dark:text-red-50">Create account</CardTitle>
+          <p className="text-sm text-red-700/70 dark:text-red-200/70">Start tracking revenue opportunities.</p>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -99,9 +99,9 @@ export default function RegisterPage() {
             </Button>
           </form>
 
-          <p className="mt-4 text-xs text-red-200/70">
+          <p className="mt-4 text-xs text-red-700/70 dark:text-red-200/70">
             Already have an account?{" "}
-            <Link href="/auth/login" className="text-red-200 hover:text-red-100">
+            <Link href="/auth/login" className="text-red-800 dark:text-red-200 hover:text-red-900 dark:hover:text-red-100">
               Log in
             </Link>
             .

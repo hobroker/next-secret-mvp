@@ -168,7 +168,7 @@ export default function ItemForm() {
           type="button"
           variant="outline"
           disabled={loading}
-          className="border-red-800 text-red-200 hover:text-red-100"
+          className="border-red-800 text-red-800 dark:text-red-200 hover:text-red-900 dark:hover:text-red-100"
           onClick={(e) => handleSubmit(e, "draft")}
         >
           Save draft
