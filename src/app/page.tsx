@@ -36,7 +36,7 @@ export default function Home() {
               </Button>
             </div>
           </div>
-          <Card className="bg-black/70 border-red-900/40">
+          <Card className="bg-card text-card-foreground dark:bg-black/70 border-red-900/40">
             <CardHeader>
               <CardTitle className="text-red-900 dark:text-red-100">What you get</CardTitle>
             </CardHeader>
@@ -64,7 +64,7 @@ export default function Home() {
               body: "Ship fast with templates, saved views, and daily focus.",
             },
           ].map((feature) => (
-            <Card key={feature.title} className="bg-black/70 border-red-900/40">
+            <Card key={feature.title} className="bg-card text-card-foreground dark:bg-black/70 border-red-900/40">
               <CardHeader>
                 <CardTitle className="text-red-900 dark:text-red-100">{feature.title}</CardTitle>
               </CardHeader>
@@ -74,7 +74,7 @@ export default function Home() {
         </section>
 
         <section className="grid gap-6 md:grid-cols-[1fr,1fr]">
-          <Card className="bg-black/70 border-red-900/40">
+          <Card className="bg-card text-card-foreground dark:bg-black/70 border-red-900/40">
             <CardHeader>
               <CardTitle className="text-red-900 dark:text-red-100">Who it&apos;s for</CardTitle>
             </CardHeader>
@@ -84,7 +84,7 @@ export default function Home() {
               <p>• Agencies managing upsells and new offers.</p>
             </CardContent>
           </Card>
-          <Card className="bg-black/70 border-red-900/40">
+          <Card className="bg-card text-card-foreground dark:bg-black/70 border-red-900/40">
             <CardHeader>
               <CardTitle className="text-red-900 dark:text-red-100">Why teams stick</CardTitle>
             </CardHeader>
@@ -96,7 +96,7 @@ export default function Home() {
           </Card>
         </section>
 
-        <section className="rounded-2xl border border-red-900/40 bg-black/70 p-8 text-center">
+        <section className="rounded-2xl border border-red-900/40 bg-card text-card-foreground dark:bg-black/70 p-8 text-center">
           <h2 className="text-2xl font-semibold text-red-950 dark:text-red-50">Ready to build your revenue pipeline?</h2>
           <p className="mt-2 text-sm text-red-700/70 dark:text-red-200/70">
             Stop guessing. Start executing. It takes less than a minute to get set up.

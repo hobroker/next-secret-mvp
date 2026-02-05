@@ -39,7 +39,7 @@ export default function RegisterPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground flex items-center justify-center px-4">
-      <Card className="w-full max-w-md bg-black/70 border-red-900/40">
+      <Card className="w-full max-w-md bg-card text-card-foreground dark:bg-black/70 border-red-900/40">
         <CardHeader>
           <CardTitle className="text-red-950 dark:text-red-50">Create account</CardTitle>
           <p className="text-sm text-red-700/70 dark:text-red-200/70">Start tracking revenue opportunities.</p>

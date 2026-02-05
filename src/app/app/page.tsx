@@ -31,7 +31,7 @@ export default async function DashboardPage() {
 
   return (
     <div className="mx-auto max-w-6xl grid gap-6">
-      <Card className="bg-black/70 border-red-900/40">
+      <Card className="bg-card text-card-foreground dark:bg-black/70 border-red-900/40">
         <CardHeader>
           <CardTitle className="text-red-950 dark:text-red-50">Welcome back</CardTitle>
           <p className="text-sm text-red-700/70 dark:text-red-200/70">
@@ -61,7 +61,7 @@ export default async function DashboardPage() {
       </Card>
 
       <div className="grid gap-6 lg:grid-cols-3">
-        <Card className="bg-black/70 border-red-900/40">
+        <Card className="bg-card text-card-foreground dark:bg-black/70 border-red-900/40">
           <CardHeader>
             <CardTitle className="text-red-900 dark:text-red-100">Recent activity</CardTitle>
           </CardHeader>
@@ -81,7 +81,7 @@ export default async function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className="bg-black/70 border-red-900/40">
+        <Card className="bg-card text-card-foreground dark:bg-black/70 border-red-900/40">
           <CardHeader>
             <CardTitle className="text-red-900 dark:text-red-100">Drafts</CardTitle>
           </CardHeader>
@@ -101,7 +101,7 @@ export default async function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className="bg-black/70 border-red-900/40">
+        <Card className="bg-card text-card-foreground dark:bg-black/70 border-red-900/40">
           <CardHeader>
             <CardTitle className="text-red-900 dark:text-red-100">Quick stats</CardTitle>
           </CardHeader>

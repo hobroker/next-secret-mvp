@@ -33,7 +33,7 @@ export default function OnboardingClient() {
 
   return (
     <div className="mx-auto max-w-3xl">
-      <Card className="bg-black/70 border-red-900/40">
+      <Card className="bg-card text-card-foreground dark:bg-black/70 border-red-900/40">
         <CardHeader>
           <CardTitle className="text-red-950 dark:text-red-50">{steps[step].title}</CardTitle>
           <p className="text-sm text-red-700/70 dark:text-red-200/70">{steps[step].body}</p>

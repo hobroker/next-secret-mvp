@@ -77,7 +77,7 @@ export default async function OpportunitiesPage({
     <div className="mx-auto max-w-6xl grid gap-6">
       <StatsCards items={items} />
 
-      <Card className="bg-black/70 border-red-900/40">
+      <Card className="bg-card text-card-foreground dark:bg-black/70 border-red-900/40">
         <CardHeader>
           <CardTitle className="text-red-950 dark:text-red-50">Search & filters</CardTitle>
         </CardHeader>
@@ -89,7 +89,7 @@ export default async function OpportunitiesPage({
             <select
               name="status"
               defaultValue={status}
-              className="h-10 rounded-md border border-red-800 bg-black/70 px-3 text-sm text-red-800 dark:text-red-200"
+              className="h-10 rounded-md border border-red-800 bg-card text-card-foreground dark:bg-black/70 px-3 text-sm text-red-800 dark:text-red-200"
             >
               {"all,draft,idea,qualified,proposal,won,lost".split(",").map((s) => (
                 <option key={s} value={s}>
@@ -118,7 +118,7 @@ export default async function OpportunitiesPage({
         </CardContent>
       </Card>
 
-      <Card className="bg-black/70 border-red-900/40">
+      <Card className="bg-card text-card-foreground dark:bg-black/70 border-red-900/40">
         <CardHeader>
           <CardTitle className="text-red-950 dark:text-red-50">Saved views</CardTitle>
         </CardHeader>
@@ -146,7 +146,7 @@ export default async function OpportunitiesPage({
       </Card>
 
       <div className="grid gap-6 lg:grid-cols-[2fr,1fr]">
-        <Card className="bg-black/70 border-red-900/40">
+        <Card className="bg-card text-card-foreground dark:bg-black/70 border-red-900/40">
           <CardHeader>
             <CardTitle className="text-red-950 dark:text-red-50">Revenue Opportunities</CardTitle>
             <p className="text-sm text-red-700/70 dark:text-red-200/70">
@@ -161,7 +161,7 @@ export default async function OpportunitiesPage({
         <Chart items={items} />
       </div>
 
-      <Card className="bg-black/70 border-red-900/40">
+      <Card className="bg-card text-card-foreground dark:bg-black/70 border-red-900/40">
         <CardHeader className="flex flex-row items-center justify-between">
           <CardTitle className="text-red-900 dark:text-red-100">Your entries</CardTitle>
           <ExportButtons />

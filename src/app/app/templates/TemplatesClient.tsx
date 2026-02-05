@@ -57,7 +57,7 @@ export default function TemplatesClient() {
 
   return (
     <div className="mx-auto max-w-5xl grid gap-6">
-      <Card className="bg-black/70 border-red-900/40">
+      <Card className="bg-card text-card-foreground dark:bg-black/70 border-red-900/40">
         <CardHeader>
           <CardTitle className="text-red-950 dark:text-red-50">Templates & Playbooks</CardTitle>
           <p className="text-sm text-red-700/70 dark:text-red-200/70">
@@ -68,7 +68,7 @@ export default function TemplatesClient() {
 
       <div className="grid gap-6 md:grid-cols-3">
         {templates.map((template) => (
-          <Card key={template.id} className="bg-black/70 border-red-900/40">
+          <Card key={template.id} className="bg-card text-card-foreground dark:bg-black/70 border-red-900/40">
             <CardHeader>
               <CardTitle className="text-red-900 dark:text-red-100 text-base">{template.title}</CardTitle>
               <p className="text-sm text-red-700/70 dark:text-red-200/70">{template.details}</p>

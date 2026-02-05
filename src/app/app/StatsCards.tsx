@@ -20,7 +20,7 @@ export default function StatsCards({ items }: { items: Item[] }) {
   return (
     <div className="grid gap-4 md:grid-cols-4">
       {cards.map((card) => (
-        <Card key={card.label} className="bg-black/70 border-red-900/40">
+        <Card key={card.label} className="bg-card text-card-foreground dark:bg-black/70 border-red-900/40">
           <CardHeader className="pb-2">
             <CardTitle className="text-xs uppercase tracking-wide text-red-300/80">
               {card.label}

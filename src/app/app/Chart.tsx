@@ -10,7 +10,7 @@ export default function Chart({ items }: { items: Item[] }) {
   const max = Math.max(1, ...counts);
 
   return (
-    <Card className="bg-black/70 border-red-900/40">
+    <Card className="bg-card text-card-foreground dark:bg-black/70 border-red-900/40">
       <CardHeader>
         <CardTitle className="text-sm text-red-800 dark:text-red-200">Pipeline health</CardTitle>
       </CardHeader>
